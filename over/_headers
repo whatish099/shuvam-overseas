@@ -1,0 +1,29 @@
+# Security headers for Shuvam Overseas Employment PVT.LTD (Netlify / Cloudflare Pages / Vercel)
+# Must stay in sync with the CSP <meta> in each page head and with .htaccess.
+
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+
+# HTML: always revalidate (deployed pages must not go stale)
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Static assets: cache long (filenames are stable; purge on content change)
+/css/*
+  Cache-Control: public, max-age=86400
+
+/js/*
+  Cache-Control: public, max-age=86400
+
+/images/*
+  Cache-Control: public, max-age=604800
+
+/fonts/*
+  Cache-Control: public, max-age=604800
